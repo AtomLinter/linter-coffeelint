@@ -1,0 +1,18 @@
+{
+  "name": "linter-coffeelint",
+  "main": "./lib/init",
+  "linter-package": true,
+  "version": "0.0.0",
+  "description": "Linter plugin for CoffeeScript, using coffeelint",
+  "activationEvents": [
+    "linter-coffeelint:toggle"
+  ],
+  "repository": "https://github.com/AtomLinter/linter-coffeelint.git",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "coffeelint": "~1.2.0"
+  }
+}
