@@ -2,7 +2,7 @@
   "name": "linter-coffeelint",
   "main": "./lib/init",
   "linter-package": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Linter plugin for CoffeeScript, using coffeelint",
   "activationEvents": [
     "linter-coffeelint:toggle"
