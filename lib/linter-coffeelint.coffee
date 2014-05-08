@@ -27,4 +27,7 @@ class LinterCoffeelint extends Linter
     if editor.getGrammar().scopeName is 'source.litcoffee'
       @cmd += ' --literate'
 
+  destroy: ->
+    atom.config.unobserve 'linter-coffeelint.coffeelintExecutablePath'
+
 module.exports = LinterCoffeelint
