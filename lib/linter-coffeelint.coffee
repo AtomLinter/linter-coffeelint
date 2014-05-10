@@ -21,6 +21,8 @@ class LinterCoffeelint extends Linter
   regexFlags: 's'
 
   constructor: (editor)->
+    super(editor)
+
     atom.config.observe 'linter-coffeelint.coffeelintExecutablePath', =>
       @executablePath = atom.config.get 'linter-coffeelint.coffeelintExecutablePath'
 
