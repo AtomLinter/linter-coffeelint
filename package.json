@@ -4,9 +4,6 @@
   "linter-package": true,
   "version": "0.0.4",
   "description": "Lint CoffeeScript on the fly, using coffeelint",
-  "activationEvents": [
-    "linter-coffeelint:toggle"
-  ],
   "repository": "https://github.com/AtomLinter/linter-coffeelint.git",
   "license": "MIT",
   "engines": {
