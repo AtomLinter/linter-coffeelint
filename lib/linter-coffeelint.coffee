@@ -1,5 +1,6 @@
 linterPath = atom.packages.getLoadedPackage("linter").path
 Linter = require "#{linterPath}/lib/linter"
+findFile = require "#{linterPath}/lib/util"
 
 class LinterCoffeelint extends Linter
   # The syntax that the linter handles. May be a string or
