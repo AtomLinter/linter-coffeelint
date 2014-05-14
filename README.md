@@ -18,6 +18,8 @@ You can configure linter-coffeelint by editing ~/.atom/config.cson (choose Open 
   'coffeelintExecutablePath': null #coffeelint path. run 'which coffeelint' to find the path
 ```
 
+**Note**: This plugin finds the nearest coffeelint.json file and uses the `-f` command line argument to use that file, so you may not use the `-f` argument in the linter settings.
+
 ## Contributing
 If you would like to contribute enhancements or fixes, please do the following:
 

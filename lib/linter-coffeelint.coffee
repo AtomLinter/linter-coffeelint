@@ -23,6 +23,10 @@ class LinterCoffeelint extends Linter
   constructor: (editor)->
     super(editor)
 
+    config = findFile(@cwd, ['coffeelint.json'])
+    if config
+      @cmd += " --f #{config}"
+
     atom.config.observe 'linter-coffeelint.coffeelintExecutablePath', =>
       @executablePath = atom.config.get 'linter-coffeelint.coffeelintExecutablePath'
 
