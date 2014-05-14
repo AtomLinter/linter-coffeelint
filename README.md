@@ -1,7 +1,7 @@
 linter-coffeelint
 =========================
 
-This linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides an interface to [coffeelint](http://www.coffeelint.com/docs/). It will be used with files that have the “CoffeeScript” or “CoffeeScript (literate)” syntax.
+This linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides an interface to [coffeelint](http://www.coffeelint.org/docs/). It will be used with files that have the “CoffeeScript” or “CoffeeScript (literate)” syntax.
 
 ## Installation
 Linter package must be installed in order to use this plugin. If Linter is not installed, please follow the instructions [here](https://github.com/AtomLinter/Linter).
