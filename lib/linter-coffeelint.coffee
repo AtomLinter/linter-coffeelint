@@ -21,6 +21,8 @@ class LinterCoffeelint extends Linter
 
   regexFlags: 's'
 
+  isNodeExecutable: yes
+
   constructor: (editor) ->
     super(editor)
 
