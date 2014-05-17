@@ -1,3 +1,7 @@
+{parseString} = require 'xml2js'
+
+{Range} = require 'atom'
+
 linterPath = atom.packages.getLoadedPackage("linter").path
 Linter = require "#{linterPath}/lib/linter"
 findFile = require "#{linterPath}/lib/util"
@@ -9,15 +13,7 @@ class LinterCoffeelint extends Linter
 
   # A string, list, tuple or callable that returns a string, list or tuple,
   # containing the command line (with arguments) used to lint.
-  cmd: 'coffeelint --jslint'
-
-  linterName: 'coffeelint'
-
-  # A regex pattern used to extract information from the executable's output.
-  regex:
-    '<issue line="(?<line>\\d+)"' +
-    # '.+?lineEnd="\\d+"' +
-    '.+?reason="\\[((?<error>error)|(?<warning>warn))\\] (?<message>.+?)"'
+  cmd: 'coffeelint --checkstyle'
 
   regexFlags: 's'
 
@@ -33,6 +29,17 @@ class LinterCoffeelint extends Linter
 
     if editor.getGrammar().scopeName is 'source.litcoffee'
       @cmd += ' --literate'
+
+  processMessage: (xml, callback) ->
+    parseString xml, (err, messagesUnprocessed) ->
+      return err if err
+      messages = messagesUnprocessed.checkstyle.file?[0].error.map (message, index) ->
+        message: message.$.message.replace(/; context: .*?$/, '')
+        line: message.$.line
+        level: message.$.severity
+        linter: message.$.source
+        range: new Range([message.$.line - 1, 1], [message.$.line, -1])
+      callback? messages if messages?
 
   destroy: ->
     atom.config.unobserve 'linter-coffeelint.coffeelintExecutablePath'
