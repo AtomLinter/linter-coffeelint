@@ -34,12 +34,11 @@ class LinterCoffeelint extends Linter
     parseString xml, (err, messagesUnprocessed) ->
       return err if err
       messages = messagesUnprocessed.checkstyle.file?[0].error.map (message, index) ->
-        issue =
-          message: message.$.message.replace(/; context: .*?$/, '')
-          line: message.$.line
-          level: message.$.severity
-          linter: message.$.source
-        issue
+        message: message.$.message.replace(/; context: .*?$/, '')
+        line: message.$.line
+        level: message.$.severity
+        linter: message.$.source
+        range: new Range([message.$.line - 1, 1], [message.$.line, -1])
       callback messages
 
   destroy: ->
