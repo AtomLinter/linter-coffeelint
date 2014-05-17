@@ -39,7 +39,7 @@ class LinterCoffeelint extends Linter
         level: message.$.severity
         linter: message.$.source
         range: new Range([message.$.line - 1, 1], [message.$.line, -1])
-      callback messages
+      callback? messages if messages?
 
   destroy: ->
     atom.config.unobserve 'linter-coffeelint.coffeelintExecutablePath'
