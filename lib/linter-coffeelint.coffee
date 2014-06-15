@@ -1,4 +1,4 @@
-linterPath = atom.packages.getLoadedPackage("linter").path
+linterPath = atom.packages.getLoadedPackage('linter').path
 Linter = require "#{linterPath}/lib/linter"
 findFile = require "#{linterPath}/lib/util"
 
@@ -21,7 +21,9 @@ class LinterCoffeelint extends Linter
 
   regexFlags: 's'
 
-  constructor: (editor)->
+  isNodeExecutable: yes
+
+  constructor: (editor) ->
     super(editor)
 
     config = findFile(@cwd, ['coffeelint.json'])
