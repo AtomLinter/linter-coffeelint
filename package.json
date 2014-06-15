@@ -11,6 +11,6 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "coffeelint": "~1.2.0"
+    "coffeelint": "~1.5.2"
   }
 }
