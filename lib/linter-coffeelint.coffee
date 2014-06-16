@@ -9,7 +9,7 @@ class LinterCoffeelint extends Linter
 
   # A string, list, tuple or callable that returns a string, list or tuple,
   # containing the command line (with arguments) used to lint.
-  cmd: 'coffeelint --jslint'
+  cmd: 'coffeelint --reporter jslint'
 
   linterName: 'coffeelint'
 
