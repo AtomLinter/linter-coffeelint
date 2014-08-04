@@ -5,4 +5,4 @@ module.exports =
     coffeelintExecutablePath: path.join __dirname, '..', 'node_modules', 'coffeelint', 'bin'
 
   activate: ->
-    console.log 'activate linter-coffelint'
+    console.log 'activate linter-coffeelint'
