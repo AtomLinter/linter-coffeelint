@@ -1,49 +1,63 @@
 linterPath = atom.packages.getLoadedPackage('linter').path
 Linter = require "#{linterPath}/lib/linter"
-findFile = require "#{linterPath}/lib/util"
+path = require('path')
+resolve = require('resolve').sync
+
+# I can't just map over parseInt because it needs the 2nd parameter and map
+# passes the current index as the 2nd parameter
+toInt = (str) -> parseInt(str, 10)
 
 class LinterCoffeelint extends Linter
   # The syntax that the linter handles. May be a string or
   # list/tuple of strings. Names should be all lowercase.
-  @syntax: ['source.coffee', 'source.litcoffee']
-
-  # A string, list, tuple or callable that returns a string, list or tuple,
-  # containing the command line (with arguments) used to lint.
-  cmd: 'coffeelint --reporter jslint'
+  #
+  # If you have the react plugin it switches source.coffee to source.coffee.jsx
+  # even if you aren't actually using jsx in that file.
+  @syntax: ['source.coffee', 'source.litcoffee', 'source.coffee.jsx']
 
   linterName: 'coffeelint'
 
-  # A regex pattern used to extract information from the executable's output.
-  regex:
-    '<issue line="(?<line>\\d+)"' +
-    # '.+?lineEnd="\\d+"' +
-    '.+?reason="\\[((?<error>error)|(?<warning>warn))\\] (?<message>.+?)"'
+  _resolveCoffeeLint: (filePath) ->
+    try
+      return resolve('coffeelint', {
+        basedir: path.dirname(filePath)
+      })
+    return 'coffeelint'
 
-  regexFlags: 's'
+  lintFile: (filePath, callback) ->
+    coffeeLintPath = @_resolveCoffeeLint(filePath)
+    coffeelint = require(coffeeLintPath)
 
-  isNodeExecutable: yes
+    # Versions before 1.9.1 don't work with atom because of an assumption that
+    # if window is defined, then it must be running in a browser. Atom breaks
+    # this assumption, so CoffeeLint < 1.9.1 will fail to find CoffeeScript.
+    # See https://github.com/clutchski/coffeelint/pull/383
+    [major, minor, patch] = coffeelint.VERSION.split('.').map(toInt)
+    if (major <= 1 and minor < 9) or (major is 1 and minor is 9 and patch is 0)
+      coffeeLintPath = 'coffeelint'
+      coffeelint = require(coffeeLintPath)
 
-  configPath: null
+    configFinder = require("#{coffeeLintPath}/lib/configfinder")
 
-  constructor: (editor) ->
-    super(editor)
+    filename = path.basename filePath
+    origPath = path.join @cwd, filename
 
-    atom.config.observe 'linter-coffeelint.coffeelintConfigPath', =>
-      @configPath = atom.config.get 'linter-coffeelint.coffeelintConfigPath'
+    isLiterate = @editor.getGrammar().scopeName is 'source.litcoffee'
+    config = configFinder.getConfig(origPath)
+    source = @editor.getText()
 
-    if configPathLocal = findFile(@cwd, ['coffeelint.json'])
-      @cmd += " -f #{configPathLocal}"
-    else if @configPath
-      @cmd += " -f #{@configPath}"
+    result = coffeelint.lint(source, config, isLiterate)
 
-    atom.config.observe 'linter-coffeelint.coffeelintExecutablePath', =>
-      @executablePath = atom.config.get 'linter-coffeelint.coffeelintExecutablePath'
+    callback(result.map(@transform))
 
-    if editor.getGrammar().scopeName is 'source.litcoffee'
-      @cmd += ' --literate'
-
-  destroy: ->
-    atom.config.unobserve 'linter-coffeelint.coffeelintExecutablePath'
-    atom.config.unobserve 'linter-coffeelint.coffeelintConfigPath'
+  transform: (m) =>
+    @createMessage {
+      line: m.lineNumber,
+      # None of the rules currently return a column, but they may in the future.
+      col: m.column,
+      error: m.level is 'error'
+      warning: m.level is 'warn'
+      message: "#{m.message} (#{m.rule})"
+    }
 
 module.exports = LinterCoffeelint

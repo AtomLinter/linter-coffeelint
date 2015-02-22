@@ -1,9 +1,13 @@
 path = require 'path'
 
 module.exports =
-  configDefaults:
-    coffeelintExecutablePath: path.join __dirname, '..', 'node_modules', 'coffeelint', 'bin'
-    coffeelintConfigPath: null
+  # Your configuration belongs in your project, not your editor.
+  # https://github.com/clutchski/coffeelint/blob/master/doc/user.md
+  #
+  # If you include coffeelint in your project's dev dependencies it will use
+  # that version. This is the same behavior the coffeelint commandline gives
+  # you.
+  configDefaults: {}
 
   activate: ->
     console.log 'activate linter-coffeelint'
