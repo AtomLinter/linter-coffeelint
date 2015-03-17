@@ -33,7 +33,7 @@ class LinterCoffeelint extends Linter
 
     if configPathLocal = findFile(@cwd, ['coffeelint.json'])
       @cmd += " -f #{configPathLocal}"
-    else if @configPath
+    else if @configPath?.length > 0
       @cmd += " -f #{@configPath}"
 
     atom.config.observe 'linter-coffeelint.coffeelintExecutablePath', =>
