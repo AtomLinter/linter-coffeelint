@@ -12,13 +12,11 @@ $ apm install linter-coffeelint
 ```
 
 ## Settings
-You can configure linter-coffeelint by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):
-```
-'linter-coffeelint':
-  'coffeelintExecutablePath': null #coffeelint path. run 'which coffeelint' to find the path to the directory that holds the executable
-```
 
-**Note**: This plugin finds the nearest coffeelint.json file and uses the `-f` command line argument to use that file, so you may not use the `-f` argument in the linter settings.
+As of v0.2.0 there is no need to specify a path to coffeelint. If you need to use a specific version you can specify it in your project's `package.json` and `linter-coffeelint` will use that one. This is the same behavior the coffeelint commandline gives you.
+
+Your configuration belongs in your project, not your editor.
+https://github.com/clutchski/coffeelint/blob/master/doc/user.md
 
 ## Contributing
 If you would like to contribute enhancements or fixes, please do the following:
