@@ -1,6 +1,7 @@
 linterPath = atom.packages.getLoadedPackage('linter').path
 Linter = require "#{linterPath}/lib/linter"
 findFile = require "#{linterPath}/lib/util"
+path = require 'path'
 
 class LinterCoffeelint extends Linter
   # The syntax that the linter handles. May be a string or
@@ -35,6 +36,8 @@ class LinterCoffeelint extends Linter
       @cmd += " -f #{configPathLocal}"
     else if @configPath?.length > 0
       @cmd += " -f #{@configPath}"
+    else
+      @cmd += " -f #{path.join(atom.packages.resolvePackagePath('linter-coffeelint'), 'coffeelint.json')}"
 
     atom.config.observe 'linter-coffeelint.coffeelintExecutablePath', =>
       @executablePath = atom.config.get 'linter-coffeelint.coffeelintExecutablePath'
