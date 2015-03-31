@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/AtomLinter/linter-coffeelint.png?label=ready&title=Ready)](https://waffle.io/AtomLinter/linter-coffeelint)
 linter-coffeelint
 =========================
 
