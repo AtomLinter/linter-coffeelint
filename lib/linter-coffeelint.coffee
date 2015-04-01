@@ -43,10 +43,21 @@ class LinterCoffeelint extends Linter
     origPath = path.join @cwd, filename
 
     isLiterate = @editor.getGrammar().scopeName is 'source.litcoffee'
-    config = configFinder.getConfig(origPath)
     source = @editor.getText()
 
-    result = coffeelint.lint(source, config, isLiterate)
+    try
+      config = configFinder.getConfig(origPath)
+      result = coffeelint.lint(source, config, isLiterate)
+    catch e
+      result = []
+      console.log(e.message)
+      console.log(e.stack)
+      result.push({
+        lineNumber: 1
+        level: 'error'
+        message: "CoffeeLint crashed, see console for error details."
+        rule: 'none'
+      })
 
     callback(result.map(@transform))
 
