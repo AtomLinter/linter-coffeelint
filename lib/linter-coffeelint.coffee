@@ -62,13 +62,16 @@ class LinterCoffeelint extends Linter
     callback(result.map(@transform))
 
   transform: (m) =>
+    message = m.message
+    if m.context
+      message += ". #{m.context}"
     @createMessage {
       line: m.lineNumber,
       # None of the rules currently return a column, but they may in the future.
       col: m.column,
       error: m.level is 'error'
       warning: m.level is 'warn'
-      message: "#{m.message} (#{m.rule})"
+      message: "#{message}. (#{m.rule})"
     }
 
 module.exports = LinterCoffeelint
