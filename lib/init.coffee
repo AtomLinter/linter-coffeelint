@@ -7,7 +7,7 @@ module.exports =
   # If you include coffeelint in your project's dev dependencies it will use
   # that version. This is the same behavior the coffeelint commandline gives
   # you.
-  configDefaults: {}
+  config: {}
 
   activate: ->
     console.log 'activate linter-coffeelint'
