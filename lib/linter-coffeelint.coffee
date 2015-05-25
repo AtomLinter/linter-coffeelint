@@ -19,7 +19,7 @@ class LinterCoffeelint extends Linter
 
   _resolveCoffeeLint: (filePath) ->
     try
-      path.dirname(resolve('coffeelint/package.json', {
+      return path.dirname(resolve('coffeelint/package.json', {
         basedir: path.dirname(filePath)
       }))
     return 'coffeelint'
