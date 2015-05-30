@@ -11,3 +11,6 @@ module.exports =
 
   activate: ->
     console.log 'activate linter-coffeelint'
+
+  provideLinter: ->
+    return require('./plus-linter.coffee')
