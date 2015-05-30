@@ -10,6 +10,13 @@
   "engines": {
     "atom": ">0.50.0"
   },
+  "providedServices": {
+    "linter-plus": {
+      "versions": {
+        "0.1.0": "provideLinter"
+      }
+    }
+  },
   "dependencies": {
     "coffeelint": "^1.9.7",
     "resolve": "^1.1.5"
