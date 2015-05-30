@@ -3,7 +3,7 @@
   "main": "./lib/init",
   "linter-package": true,
   "activationCommands": {},
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Lint CoffeeScript on the fly, using coffeelint",
   "repository": "https://github.com/AtomLinter/linter-coffeelint.git",
   "license": "MIT",
