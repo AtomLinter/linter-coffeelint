@@ -8,7 +8,7 @@ module.exports = new class # This only needs to be a class to bind lint()
 
   # coffeelint: disable=no_unnecessary_fat_arrows
   # The fat arrow here is necessary
-  lint: (TextEditor, TextBuffer, {Error}) =>
+  lint: (TextEditor, TextBuffer) =>
   # coffeelint: enable=no_unnecessary_fat_arrows
     filePath = TextEditor.getPath()
     if filePath
