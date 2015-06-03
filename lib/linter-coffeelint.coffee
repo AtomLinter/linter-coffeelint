@@ -8,11 +8,18 @@ if linterPackage
 
 
   class LinterCoffeelint extends Linter
+
+    # Since linter-plus is backward compatible `init.coffee` will disable this
+    # class if it detects linter-plus
+    @enabled: true
     @syntax: Core.scopes
 
     linterName: 'coffeelint'
 
     lintFile: (filePath, callback) =>
+      if not LinterCoffeelint.enabled
+        return callback([])
+
       filename = path.basename filePath
       origPath = path.join @cwd, filename
       source = @editor.getText()

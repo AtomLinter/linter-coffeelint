@@ -33,10 +33,10 @@ module.exports = new class # This only needs to be a class to bind lint()
         range = [[lineNumber, startCol], [lineNumber, endCol]]
 
         return {
-          Type: if level is 'error' then 'Error' else 'Warning'
-          Message: message
-          File: filePath
-          Position: range
+          type: if level is 'error' then 'Error' else 'Warning'
+          message: message
+          file: filePath
+          position: range
         }
 
       return Core.lint(filePath, origPath, source, scopeName).map(transform)

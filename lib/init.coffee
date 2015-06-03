@@ -13,4 +13,6 @@ module.exports =
     console.log 'activate linter-coffeelint'
 
   provideLinter: ->
+    require('./linter-coffeelint.coffee').enabled = false
+
     return require('./plus-linter.coffee')
