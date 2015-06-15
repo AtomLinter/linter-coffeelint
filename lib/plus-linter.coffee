@@ -3,12 +3,14 @@ path = require('path')
 
 module.exports = new class # This only needs to be a class to bind lint()
 
-  scopes: Core.scopes
+  grammarScopes: Core.scopes
+  scope: "file"
   lintOnFly: true
 
   # coffeelint: disable=no_unnecessary_fat_arrows
   # The fat arrow here is necessary
-  lint: (TextEditor, TextBuffer) =>
+  lint: (TextEditor) =>
+    TextBuffer = TextEditor.getBuffer()
   # coffeelint: enable=no_unnecessary_fat_arrows
     filePath = TextEditor.getPath()
     if filePath
@@ -27,16 +29,17 @@ module.exports = new class # This only needs to be a class to bind lint()
         # without the indentation at begining of line
         indentLevel = TextEditor.indentationForBufferRow(lineNumber - 1)
 
-        startCol = (TextEditor.getTabLength() * indentLevel) + 1
+        startCol = (TextEditor.getTabLength() * indentLevel)
         endCol = TextBuffer.lineLengthForRow(lineNumber - 1)
 
-        range = [[lineNumber, startCol], [lineNumber, endCol]]
+        range = [[lineNumber - 1, startCol], [lineNumber - 1, endCol]]
 
         return {
           type: if level is 'error' then 'Error' else 'Warning'
-          message: message
-          file: filePath
-          position: range
+          text: message
+          filePath: filePath
+          range: range
         }
 
       return Core.lint(filePath, origPath, source, scopeName).map(transform)
+
