@@ -32,7 +32,7 @@ module.exports = new class # This only needs to be a class to bind lint()
         startCol = (TextEditor.getTabLength() * indentLevel)
         endCol = TextBuffer.lineLengthForRow(lineNumber - 1)
 
-        range = [[lineNumber - 1, startCol - 1], [lineNumber - 1, endCol]]
+        range = [[lineNumber - 1, startCol], [lineNumber - 1, endCol]]
 
         return {
           type: if level is 'error' then 'Error' else 'Warning'
