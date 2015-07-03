@@ -1,7 +1,6 @@
 {
   "name": "linter-coffeelint",
   "main": "./lib/init",
-  "linter-package": true,
   "activationCommands": {},
   "version": "0.3.2",
   "description": "Lint CoffeeScript on the fly, using coffeelint",
@@ -13,7 +12,7 @@
   "providedServices": {
     "linter": {
       "versions": {
-        "0.3.0": "provideLinter"
+        "1.0.0": "provideLinter"
       }
     }
   },

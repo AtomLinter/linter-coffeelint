@@ -9,8 +9,5 @@ module.exports =
   # you.
   config: {}
 
-  activate: ->
-    console.log 'activate linter-coffeelint'
-
   provideLinter: ->
     return require('./plus-linter.coffee')
