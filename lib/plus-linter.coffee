@@ -17,7 +17,6 @@ module.exports = new class # This only needs to be a class to bind lint()
       origPath = if filePath then path.dirname filePath else ''
       source = TextEditor.getText()
 
-      window.lastTextEditor = TextEditor
       scopeName = TextEditor.getGrammar().scopeName
 
 
@@ -42,4 +41,3 @@ module.exports = new class # This only needs to be a class to bind lint()
         }
 
       return Core.lint(filePath, origPath, source, scopeName).map(transform)
-
