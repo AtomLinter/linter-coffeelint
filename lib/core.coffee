@@ -65,7 +65,7 @@ module.exports =
 
     result = []
     try
-      config = configFinder.getConfig(origPath)
+      config = configFinder.getConfig(filePath)
       if @configImportsModules(config) and not @canImportModules(coffeelint)
         showUpgradeError = true
       else
