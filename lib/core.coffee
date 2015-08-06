@@ -9,7 +9,12 @@ module.exports =
   #
   # If you have the react plugin it switches source.coffee to source.coffee.jsx
   # even if you aren't actually using jsx in that file.
-  scopes: ['source.coffee', 'source.litcoffee', 'source.coffee.jsx']
+  scopes: [
+    'source.coffee'
+    'source.litcoffee'
+    'source.coffee.jsx'
+    'source.coffee.angular'
+  ]
 
   _resolveCoffeeLint: (filePath) ->
     try
