@@ -9,6 +9,9 @@
   "engines": {
     "atom": ">0.50.0"
   },
+  "package-deps": [
+    "linter"
+  ],
   "providedServices": {
     "linter": {
       "versions": {
@@ -17,6 +20,7 @@
     }
   },
   "dependencies": {
+    "atom-package-deps": "^2.0.3",
     "coffeelint": "^1.9.7",
     "resolve": "^1.1.5"
   }
