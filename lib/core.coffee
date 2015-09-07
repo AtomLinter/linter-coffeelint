@@ -23,7 +23,11 @@ module.exports =
       return path.dirname(resolve.sync('coffeelint/package.json', {
         basedir: path.dirname(filePath)
       }))
-    return 'coffeelint'
+    catch e
+      expected = "Cannot find module 'coffeelint/package.json'"
+      if e.message[...expected.length] is expected
+        return 'coffeelint'
+      throw e
 
   configImportsModules: (config) ->
     return true for ruleName, rconfig of config when rconfig.module?
@@ -51,7 +55,7 @@ module.exports =
       return true
     false
 
-  lint: (filePath, origPath, source, scopeName) ->
+  lint: (filePath, source, scopeName) ->
     isLiterate = scopeName is 'source.litcoffee'
     showUpgradeError = false
 
