@@ -1,6 +1,8 @@
 # I can't just map over parseInt because it needs the 2nd parameter and map
 # passes the current index as the 2nd parameter
 toInt = (str) -> parseInt(str, 10)
+resolve = require 'resolve'
+path = require 'path'
 
 module.exports =
 
@@ -18,10 +20,14 @@ module.exports =
 
   _resolveCoffeeLint: (filePath) ->
     try
-      return path.dirname(resolve('coffeelint/package.json', {
+      return path.dirname(resolve.sync('coffeelint/package.json', {
         basedir: path.dirname(filePath)
       }))
-    return 'coffeelint'
+    catch e
+      expected = "Cannot find module 'coffeelint/package.json'"
+      if e.message[...expected.length] is expected
+        return 'coffeelint'
+      throw e
 
   configImportsModules: (config) ->
     return true for ruleName, rconfig of config when rconfig.module?
@@ -49,11 +55,11 @@ module.exports =
       return true
     false
 
-  lint: (filePath, origPath, source, scopeName) ->
+  lint: (filePath, source, scopeName) ->
     isLiterate = scopeName is 'source.litcoffee'
     showUpgradeError = false
 
-    coffeeLintPath = @_resolveCoffeeLint(origPath)
+    coffeeLintPath = @_resolveCoffeeLint(filePath)
     coffeelint = require(coffeeLintPath)
 
     # Versions before 1.9.1 don't work with atom because of an assumption that
