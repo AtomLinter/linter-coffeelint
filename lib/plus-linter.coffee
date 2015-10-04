@@ -3,6 +3,7 @@ path = require('path')
 
 module.exports = new class # This only needs to be a class to bind lint()
 
+  name: 'CoffeeLint'
   grammarScopes: Core.scopes
   scope: "file"
   lintOnFly: true
