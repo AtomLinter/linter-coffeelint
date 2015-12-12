@@ -20,7 +20,7 @@
     }
   },
   "dependencies": {
-    "atom-package-deps": "^2.0.3",
+    "atom-package-deps": "^3.0.6",
     "coffeelint": "^1.9.7",
     "resolve": "^1.1.5"
   }

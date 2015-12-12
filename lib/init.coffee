@@ -10,7 +10,7 @@ module.exports =
   config: {}
 
   activate: ->
-    require("atom-package-deps").install("linter-coffeelint");
+    require("atom-package-deps").install()
 
   provideLinter: ->
     return require('./plus-linter.coffee')
