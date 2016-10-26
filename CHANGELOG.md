@@ -1,5 +1,14 @@
 # Change Log
 
+## [v1.2.0](https://github.com/AtomLinter/linter-coffeelint/tree/v1.2.0) (2016-10-26)
+[Full Changelog](https://github.com/AtomLinter/linter-coffeelint/compare/v1.1.2...v1.2.0)
+
+**Implemented enhancements:**
+
+- False positive on modern Coffeescript syntax [\#69](https://github.com/AtomLinter/linter-coffeelint/issues/69)
+- Update all dependencies 🌴 [\#70](https://github.com/AtomLinter/linter-coffeelint/pull/70) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update all dependencies 🌴 [\#59](https://github.com/AtomLinter/linter-coffeelint/pull/59) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
 ## [v1.1.2](https://github.com/AtomLinter/linter-coffeelint/tree/v1.1.2) (2015-10-13)
 [Full Changelog](https://github.com/AtomLinter/linter-coffeelint/compare/v1.1.0...v1.1.2)
 
