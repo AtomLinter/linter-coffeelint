@@ -2,7 +2,7 @@
   "name": "linter-coffeelint",
   "main": "./lib/init",
   "activationCommands": {},
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Lint CoffeeScript on the fly, using coffeelint",
   "repository": "https://github.com/AtomLinter/linter-coffeelint.git",
   "license": "MIT",
@@ -20,8 +20,8 @@
     }
   },
   "dependencies": {
-    "atom-package-deps": "3.0.6",
-    "coffeelint": "1.9.7",
-    "resolve": "1.1.5"
+    "atom-package-deps": "4.3.1",
+    "coffeelint": "1.16.0",
+    "resolve": "1.1.7"
   }
 }
