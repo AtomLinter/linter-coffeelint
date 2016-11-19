@@ -9,12 +9,17 @@ const lint = require('../lib/init.coffee').provideLinter().lint;
 describe('The CoffeeLint provider for Linter', () => {
   describe('works with CoffeeScript files and', () => {
     beforeEach(() => {
+      // Info about this beforeEach() implementation:
+      // https://github.com/AtomLinter/Meta/issues/15
+      const activationPromise =
+        atom.packages.activatePackage('linter-coffeelint');
+
       waitsForPromise(() =>
-        Promise.all([
-          atom.packages.activatePackage('linter-coffeelint'),
-          atom.packages.activatePackage('language-coffee-script'),
-        ])
-      );
+        atom.packages.activatePackage('language-coffee-script').then(() =>
+          atom.workspace.open(validPath)));
+
+      atom.packages.triggerDeferredActivationHooks();
+      waitsForPromise(() => activationPromise);
     });
 
     it('finds nothing wrong with a valid file', () => {
