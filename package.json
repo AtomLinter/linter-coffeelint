@@ -2,14 +2,16 @@
   "name": "linter-coffeelint",
   "main": "./lib/init",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Lint CoffeeScript on the fly, using coffeelint",
   "repository": "https://github.com/AtomLinter/linter-coffeelint.git",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "activationHooks": ["language-coffee-script:grammar-used"],
+  "activationHooks": [
+    "language-coffee-script:grammar-used"
+  ],
   "package-deps": [
     "linter"
   ],
