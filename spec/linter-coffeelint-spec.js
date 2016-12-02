@@ -32,7 +32,7 @@ describe('The CoffeeLint provider for Linter', () => {
           expect(messages[0].text).toBe(msgText);
           expect(messages[0].filePath).toBe(arrowSpacingPath);
           expect(messages[0].range).toEqual([[6, 0], [6, 12]]);
-        })
+        }),
       );
     });
 
@@ -40,8 +40,8 @@ describe('The CoffeeLint provider for Linter', () => {
       waitsForPromise(() =>
         atom.workspace.open(validPath).then(editor => lint(editor)).then((messages) => {
           expect(messages.length).toBe(0);
-        })
-      )
+        }),
+      ),
     );
   });
 });
