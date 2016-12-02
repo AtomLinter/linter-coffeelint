@@ -28,9 +28,9 @@
     "resolve": "^1.1.7"
   },
   "devDependencies": {
-    "eslint": "^3.8.1",
+    "eslint": "^3.9.1",
     "eslint-config-airbnb-base": "^10.0.1",
-    "eslint-plugin-import": "^2.0.1"
+    "eslint-plugin-import": "^2.1.0"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
