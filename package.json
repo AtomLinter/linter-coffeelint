@@ -15,6 +15,10 @@
   "package-deps": [
     "linter"
   ],
+  "scripts": {
+    "lint": "coffeelint lib && eslint .",
+    "test": "apm test"
+  },
   "providedServices": {
     "linter": {
       "versions": {
