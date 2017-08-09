@@ -22,17 +22,17 @@ describe('The CoffeeLint provider for Linter', () => {
       waitsForPromise(() => activationPromise);
     });
 
-    it('finds nothing wrong with a valid file', () => {
+    it('finds something wrong with an invalid file', () => {
       const msgText = 'Function arrows (-> and =>) must be spaced properly. (arrow_spacing)';
       waitsForPromise(() =>
-        atom.workspace.open(arrowSpacingPath).then(editor => linter.lint(editor)).then((messages) => {
-          console.log(messages)
-          expect(messages.length).toBe(1);
-          expect(messages[0].severity).toBe('error');
-          expect(messages[0].excerpt).toBe(msgText);
-          expect(messages[0].location.file).toBe(arrowSpacingPath);
-          expect(messages[0].location.position).toEqual([[6, 0], [6, 12]]);
-        }),
+        atom.workspace.open(arrowSpacingPath).then(editor => linter.lint(editor))
+          .then((messages) => {
+            expect(messages.length).toBe(1);
+            expect(messages[0].severity).toBe('error');
+            expect(messages[0].excerpt).toBe(msgText);
+            expect(messages[0].location.file).toBe(arrowSpacingPath);
+            expect(messages[0].location.position).toEqual([[6, 0], [6, 12]]);
+          }),
       );
     });
 

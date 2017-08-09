@@ -55,7 +55,6 @@ module.exports = (filePath, source, isLiterate) ->
   # if window is defined, then it must be running in a browser. Atom breaks
   # this assumption, so CoffeeLint < 1.9.1 will fail to find CoffeeScript.
   # See https://github.com/clutchski/coffeelint/pull/383
-  [major, minor, patch] = coffeelint.VERSION.split('.').map(toInt)
   if not isCompatibleWithAtom(coffeelint)
     coffeeLintPath = 'coffeelint'
     coffeelint = require(coffeeLintPath)

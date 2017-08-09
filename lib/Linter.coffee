@@ -50,6 +50,5 @@ class Linter
         }
 
       return new Promise (resolve) =>
-        @worker.start(filePath, source, isLiterate, (results) ->
+        @worker.start filePath, source, isLiterate, (results) ->
           resolve(results.map(transform))
-        )
