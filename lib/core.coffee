@@ -41,6 +41,7 @@ module.exports = (filePath, source, isLiterate) ->
 
   unless showUpgradeError
     if configImportsModules(config) and semver.lt(coffeelint.VERSION, '1.9.5')
+      coffeeLintPath = 'coffeelint'
       coffeelint = require(coffeeLintPath)
       configFinder = require("#{coffeeLintPath}/lib/configfinder")
       config = configFinder.getConfig(filePath)
