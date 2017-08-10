@@ -37,30 +37,23 @@ module.exports = (filePath, source, isLiterate) ->
     showUpgradeError = true
 
   configFinder = require("#{coffeeLintPath}/lib/configfinder")
+  config = configFinder.getConfig(filePath)
 
-  result = []
-  try
-    config = configFinder.getConfig(filePath)
+  unless showUpgradeError
     if configImportsModules(config) and semver.lt(coffeelint.VERSION, '1.9.5')
+      coffeelint = require(coffeeLintPath)
+      configFinder = require("#{coffeeLintPath}/lib/configfinder")
+      config = configFinder.getConfig(filePath)
       showUpgradeError = true
-    else
-      result = coffeelint.lint(source, config, isLiterate)
-  catch e
-    console.log(e.message)
-    console.log(e.stack)
-    result.push({
-      lineNumber: 1
-      level: 'error'
-      message: 'CoffeeLint crashed, see console for error details.'
-      rule: 'none'
-    })
+
+  results = coffeelint.lint(source, config, isLiterate)
 
   if showUpgradeError
-    result = [{
+    results.push {
       lineNumber: 1
       level: 'error'
       message: "http://git.io/local_upgrade upgrade your project's CoffeeLint"
       rule: 'none'
-    }]
+    }
 
-  return result
+  return results
