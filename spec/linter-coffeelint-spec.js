@@ -3,9 +3,9 @@
 import { join } from 'path';
 
 const validPath = join(__dirname, 'fixtures', 'valid', 'valid.coffee');
+const validCoffeelintPath = join(__dirname, 'fixtures', 'valid_coffeelint', 'valid.coffee');
 const arrowSpacingPath = join(__dirname, 'fixtures', 'arrow_spacing', 'arrow_spacing.coffee');
 const arrowSpacingWarningPath = join(__dirname, 'fixtures', 'arrow_spacing_warning', 'arrow_spacing.coffee');
-const arrowSpacingWarningFolder = join(__dirname, 'fixtures', 'arrow_spacing_warning');
 const linter = require('../lib/init.coffee').provideLinter();
 
 describe('The CoffeeLint provider for Linter', () => {
@@ -57,6 +57,19 @@ describe('The CoffeeLint provider for Linter', () => {
         atom.workspace.open(validPath).then(editor => linter.lint(editor)).then((messages) => {
           expect(messages.length).toBe(0);
         }),
+      ),
+    );
+
+    it('uses coffeelint from the project', () =>
+      waitsForPromise(() =>
+        atom.workspace.open(validCoffeelintPath).then(editor => linter.lint(editor))
+          .then((messages) => {
+            expect(messages.length).toBe(1);
+            expect(messages[0].severity).toBe('warning');
+            expect(messages[0].excerpt).toBe('test message. (test rule)');
+            expect(messages[0].location.file).toBe(validCoffeelintPath);
+            expect(messages[0].location.position).toEqual([[0, 0], [0, 41]]);
+          }),
       ),
     );
   });
