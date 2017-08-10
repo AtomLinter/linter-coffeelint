@@ -1,11 +1,9 @@
 # This file is a Task file that will run in a separate process
 # https://atom.io/docs/api/v1.19.0/Task
 
-# I can't just map over parseInt because it needs the 2nd parameter and map
-# passes the current index as the 2nd parameter
-toInt = (str) -> parseInt(str, 10)
 resolve = require 'resolve'
 path = require 'path'
+semver = require 'semver'
 
 
 _resolveCoffeeLint = (filePath) ->
@@ -23,39 +21,17 @@ configImportsModules = (config) ->
   return true for ruleName, rconfig of config when rconfig.module?
   return userConfig?.coffeelint?.transforms?
 
-canImportModules = (coffeelint) ->
-  [major, minor, patch] = coffeelint.VERSION.split('.').map(toInt)
-
-  if major > 1
-    return true
-  if major is 1 and minor > 9
-    return true
-  if major is 1 and minor is 9 and patch >= 5
-    return true
-  false
-
-isCompatibleWithAtom = (coffeelint) ->
-  [major, minor, patch] = coffeelint.VERSION.split('.').map(toInt)
-
-  if major > 1
-    return true
-  if major is 1 and minor > 9
-    return true
-  if major is 1 and minor is 9 and patch >= 1
-    return true
-  false
-
 module.exports = (filePath, source, isLiterate) ->
   showUpgradeError = false
 
   coffeeLintPath = _resolveCoffeeLint(filePath)
   coffeelint = require(coffeeLintPath)
 
-  # Versions before 1.9.1 don't work with atom because of an assumption that
+  # Versions before 1.9.1 don't work with Atom because of an assumption that
   # if window is defined, then it must be running in a browser. Atom breaks
   # this assumption, so CoffeeLint < 1.9.1 will fail to find CoffeeScript.
   # See https://github.com/clutchski/coffeelint/pull/383
-  if not isCompatibleWithAtom(coffeelint)
+  if semver.lt(coffeelint.VERSION, '1.9.1')
     coffeeLintPath = 'coffeelint'
     coffeelint = require(coffeeLintPath)
     showUpgradeError = true
@@ -65,7 +41,7 @@ module.exports = (filePath, source, isLiterate) ->
   result = []
   try
     config = configFinder.getConfig(filePath)
-    if configImportsModules(config) and not canImportModules(coffeelint)
+    if configImportsModules(config) and semver.lt(coffeelint.VERSION, '1.9.5')
       showUpgradeError = true
     else
       result = coffeelint.lint(source, config, isLiterate)
@@ -75,7 +51,7 @@ module.exports = (filePath, source, isLiterate) ->
     result.push({
       lineNumber: 1
       level: 'error'
-      message: "CoffeeLint crashed, see console for error details."
+      message: 'CoffeeLint crashed, see console for error details.'
       rule: 'none'
     })
 
