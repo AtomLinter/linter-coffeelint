@@ -1,5 +1,8 @@
 {Task} = require('atom')
 
+workers = new Set
+workerFile = require.resolve('./core.coffee')
+
 module.exports =
 class Linter
 
@@ -13,14 +16,10 @@ class Linter
   scope: 'file'
   lintsOnChange: true
 
-  constructor: ->
-    @worker = new Task(require.resolve('./core.coffee'))
-
   destroy: ->
-    @worker?.terminate()
+    worker?.terminate() for worker in workers
 
   lint: (textEditor) ->
-    textBuffer = textEditor.getBuffer()
     filePath = textEditor.getPath()
     if filePath
       source = textEditor.getText()
@@ -37,7 +36,7 @@ class Linter
         indentLevel = textEditor.indentationForBufferRow(lineNumber - 1)
 
         startCol = (textEditor.getTabLength() * indentLevel)
-        endCol = textBuffer.lineLengthForRow(lineNumber - 1)
+        endCol = textEditor.getBuffer().lineLengthForRow(lineNumber - 1)
 
         range = [[lineNumber - 1, startCol], [lineNumber - 1, endCol]]
 
@@ -49,6 +48,8 @@ class Linter
             position: range
         }
 
-      return new Promise (resolve) =>
-        @worker.start filePath, source, isLiterate, (results) ->
+      return new Promise (resolve) ->
+        task = Task.once workerFile, filePath, source, isLiterate, (results) ->
+          workers.delete(task)
           resolve(results.map(transform))
+        workers.add(task)
