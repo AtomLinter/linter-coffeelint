@@ -1,5 +1,25 @@
 # Change Log
 
+## [v1.3.0](https://github.com/AtomLinter/linter-coffeelint/tree/v1.3.0) (2017-08-16)
+[Full Changelog](https://github.com/AtomLinter/linter-coffeelint/compare/v1.2.1...v1.3.0)
+
+**Implemented enhancements:**
+
+- Freezes on long files [\#87](https://github.com/AtomLinter/linter-coffeelint/issues/87)
+- .coffeelintignore is ignored :P [\#50](https://github.com/AtomLinter/linter-coffeelint/issues/50)
+- Support .coffeelintignore [\#92](https://github.com/AtomLinter/linter-coffeelint/pull/92) ([Arcanemagus](https://github.com/Arcanemagus))
+- Convert to JS [\#90](https://github.com/AtomLinter/linter-coffeelint/pull/90) ([Arcanemagus](https://github.com/Arcanemagus))
+- Run linting in a Task [\#88](https://github.com/AtomLinter/linter-coffeelint/pull/88) ([UziTech](https://github.com/UziTech))
+- Update dependencies to enable Greenkeeper 🌴 [\#81](https://github.com/AtomLinter/linter-coffeelint/pull/81) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- chore\(package\): update eslint-config-airbnb-base to version 10.0.1 [\#76](https://github.com/AtomLinter/linter-coffeelint/pull/76) ([Arcanemagus](https://github.com/Arcanemagus))
+
+**Fixed bugs:**
+
+- CoffeeLint not loaded for .litcoffee files [\#89](https://github.com/AtomLinter/linter-coffeelint/issues/89)
+- Add language-iced-coffee-script to activationHooks [\#91](https://github.com/AtomLinter/linter-coffeelint/pull/91) ([Arcanemagus](https://github.com/Arcanemagus))
+- Run linting in a Task [\#88](https://github.com/AtomLinter/linter-coffeelint/pull/88) ([UziTech](https://github.com/UziTech))
+- Update Travis CI configuration for Atom v1.17.0 [\#86](https://github.com/AtomLinter/linter-coffeelint/pull/86) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v1.2.1](https://github.com/AtomLinter/linter-coffeelint/tree/v1.2.1) (2016-11-19)
 [Full Changelog](https://github.com/AtomLinter/linter-coffeelint/compare/v1.2.0...v1.2.1)
 
