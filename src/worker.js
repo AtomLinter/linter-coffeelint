@@ -4,6 +4,8 @@
 const resolve = require('resolve');
 const path = require('path');
 const semver = require('semver');
+const ignore = require('ignore');
+const fs = require('fs');
 
 const resolveCoffeeLint = (filePath) => {
   try {
@@ -24,6 +26,22 @@ const configImportsModules = config =>
     Object.prototype.hasOwnProperty.call(config[ruleName], 'module'));
 
 module.exports = (filePath, source, isLiterate) => {
+  const fileDir = path.dirname(filePath);
+  process.chdir(fileDir);
+
+  // Adapted from how CoffeeLint itself does this
+  // https://github.com/clutchski/coffeelint/blob/v1.16.1/src/commandline.coffee#L256
+  if (fs.existsSync('.coffeelintignore')) {
+    // Filter the current file path based on a .coffeelintignore file
+    const filteredPath = ignore()
+      .add(fs.readFileSync('.coffeelintignore').toString())
+      .filter([filePath]);
+    if (filteredPath.length === 0) {
+      // Path was filtered out, return no results
+      return [];
+    }
+  }
+
   let showUpgradeError = false;
 
   let coffeeLintPath = resolveCoffeeLint(filePath);
