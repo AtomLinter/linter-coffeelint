@@ -21,9 +21,13 @@ const resolveCoffeeLint = (filePath) => {
   }
 };
 
-const configImportsModules = config =>
-  Object.keys(config).some(ruleName =>
+const configImportsModules = (config) => {
+  if (!config) {
+    return false;
+  }
+  return Object.keys(config).some(ruleName =>
     Object.prototype.hasOwnProperty.call(config[ruleName], 'module'));
+};
 
 module.exports = (filePath, source, isLiterate) => {
   const fileDir = path.dirname(filePath);
