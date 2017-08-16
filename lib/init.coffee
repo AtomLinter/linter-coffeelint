@@ -12,5 +12,9 @@ module.exports =
   activate: ->
     require("atom-package-deps").install()
 
+  deactivate: ->
+    @linter?.destroy()
+
   provideLinter: ->
-    return require('./plus-linter.coffee')
+    Linter = require('./Linter.coffee')
+    @linter = new Linter
