@@ -1,5 +1,13 @@
 # Change Log
 
+## [v1.3.1](https://github.com/AtomLinter/linter-coffeelint/tree/v1.3.1) (2017-08-16)
+[Full Changelog](https://github.com/AtomLinter/linter-coffeelint/compare/v1.3.0...v1.3.1)
+
+**Fixed bugs:**
+
+- Cannot convert undefined or null to object [\#93](https://github.com/AtomLinter/linter-coffeelint/issues/93)
+- Guard against empty config [\#94](https://github.com/AtomLinter/linter-coffeelint/pull/94) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v1.3.0](https://github.com/AtomLinter/linter-coffeelint/tree/v1.3.0) (2017-08-16)
 [Full Changelog](https://github.com/AtomLinter/linter-coffeelint/compare/v1.2.1...v1.3.0)
 
