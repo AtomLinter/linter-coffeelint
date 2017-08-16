@@ -1,5 +1,15 @@
 # Change Log
 
+## [v1.2.1](https://github.com/AtomLinter/linter-coffeelint/tree/v1.2.1) (2016-11-19)
+[Full Changelog](https://github.com/AtomLinter/linter-coffeelint/compare/v1.2.0...v1.2.1)
+
+**Implemented enhancements:**
+
+- Implement specs [\#62](https://github.com/AtomLinter/linter-coffeelint/issues/62)
+- Improve Atom startup time [\#75](https://github.com/AtomLinter/linter-coffeelint/pull/75) ([walles](https://github.com/walles))
+- Add CI configuration [\#72](https://github.com/AtomLinter/linter-coffeelint/pull/72) ([Arcanemagus](https://github.com/Arcanemagus))
+- Add basic specs [\#71](https://github.com/AtomLinter/linter-coffeelint/pull/71) ([Arcanemagus](https://github.com/Arcanemagus))
+
 ## [v1.2.0](https://github.com/AtomLinter/linter-coffeelint/tree/v1.2.0) (2016-10-26)
 [Full Changelog](https://github.com/AtomLinter/linter-coffeelint/compare/v1.1.2...v1.2.0)
 
