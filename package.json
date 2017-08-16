@@ -10,7 +10,8 @@
     "atom": ">=1.7.0 <2.0.0"
   },
   "activationHooks": [
-    "language-coffee-script:grammar-used"
+    "language-coffee-script:grammar-used",
+    "language-iced-coffee-script:grammar-used"
   ],
   "package-deps": [
     "linter:2.0.0"
