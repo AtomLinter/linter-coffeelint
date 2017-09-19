@@ -25,12 +25,10 @@ describe('The CoffeeLint provider for Linter', () => {
   });
 
   it('should be in the packages list', () =>
-    expect(atom.packages.isPackageLoaded('linter-coffeelint')).toBe(true),
-  );
+    expect(atom.packages.isPackageLoaded('linter-coffeelint')).toBe(true));
 
   it('should be an active package', () =>
-    expect(atom.packages.isPackageActive('linter-coffeelint')).toBe(true),
-  );
+    expect(atom.packages.isPackageActive('linter-coffeelint')).toBe(true));
 
   describe('works with CoffeeScript files and', () => {
     it('finds something wrong with an invalid file', async () => {

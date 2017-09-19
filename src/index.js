@@ -66,7 +66,9 @@ module.exports = {
           cursor.getScopeDescriptor().getScopesArray().some(scope =>
             scope === 'source.litcoffee'));
 
-        const transform = ({ level, message, rule, lineNumber, context }) => {
+        const transform = ({
+          level, message, rule, lineNumber, context,
+        }) => {
           let excerpt = message;
           if (context) {
             excerpt = `${message}. ${context}`;
