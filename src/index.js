@@ -17,6 +17,19 @@ const loadDeps = () => {
 };
 
 module.exports = {
+  config: {
+    defaultConfig: {
+      title: 'Default Config Path',
+      type: 'string',
+      default: atom.getConfigDirPath(),
+    },
+    disableIfNoConfig: {
+      title: 'Disable If No Project Config File Is Found',
+      type: 'boolean',
+      default: false,
+    },
+  },
+
   activate() {
     this.idleCallbacks = new Set();
     let depsCallbackID;
@@ -66,6 +79,9 @@ module.exports = {
           cursor.getScopeDescriptor().getScopesArray().some(scope =>
             scope === 'source.litcoffee'));
 
+        const defaultConfig = atom.config.get('linter-coffeelint.defaultConfig');
+        const disableIfNoConfig = atom.config.get('linter-coffeelint.disableIfNoConfig');
+
         const transform = ({
           level, message, rule, lineNumber, context,
         }) => {
@@ -88,14 +104,22 @@ module.exports = {
         loadDeps();
 
         return new Promise((resolve, reject) => {
-          const task = Task.once(workerFile, filePath, source, isLiterate, (results) => {
-            this.workers.delete(task);
-            try {
-              resolve(results.map(transform));
-            } catch (e) {
-              reject(e);
-            }
-          });
+          const task = Task.once(
+            workerFile,
+            filePath,
+            source,
+            isLiterate,
+            defaultConfig,
+            disableIfNoConfig,
+            (results) => {
+              this.workers.delete(task);
+              try {
+                resolve(results.map(transform));
+              } catch (e) {
+                reject(e);
+              }
+            },
+          );
           this.workers.add(task);
           task.on('task:error', e => reject(e));
         });
