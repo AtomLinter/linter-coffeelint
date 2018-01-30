@@ -19,12 +19,13 @@ const loadDeps = () => {
 module.exports = {
   config: {
     defaultConfig: {
-      title: 'Default Config Path',
+      title: 'coffeelint.json Path',
+      description: "It will only be used when there's no config file in project",
       type: 'string',
-      default: atom.getConfigDirPath(),
+      default: '',
     },
     disableIfNoConfig: {
-      title: 'Disable If No Project Config File Is Found',
+      title: 'Disable when no coffeelint config is found (in package.json or coffeelint.json)',
       type: 'boolean',
       default: false,
     },
@@ -79,8 +80,7 @@ module.exports = {
           cursor.getScopeDescriptor().getScopesArray().some(scope =>
             scope === 'source.litcoffee'));
 
-        const defaultConfig = atom.config.get('linter-coffeelint.defaultConfig');
-        const disableIfNoConfig = atom.config.get('linter-coffeelint.disableIfNoConfig');
+        const linterConfig = atom.config.get('linter-coffeelint');
 
         const transform = ({
           level, message, rule, lineNumber, context,
@@ -109,8 +109,7 @@ module.exports = {
             filePath,
             source,
             isLiterate,
-            defaultConfig,
-            disableIfNoConfig,
+            linterConfig,
             (results) => {
               this.workers.delete(task);
               try {

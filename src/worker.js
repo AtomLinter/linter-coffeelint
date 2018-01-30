@@ -29,7 +29,7 @@ const configImportsModules = (config) => {
     Object.prototype.hasOwnProperty.call(config[ruleName], 'module'));
 };
 
-module.exports = (filePath, source, isLiterate, defaultConfig, disableIfNoConfig) => {
+module.exports = (filePath, source, isLiterate, linterConfig) => {
   const fileDir = path.dirname(filePath);
   process.chdir(fileDir);
 
@@ -80,10 +80,10 @@ module.exports = (filePath, source, isLiterate, defaultConfig, disableIfNoConfig
   }
 
   if (!config) {
-    if (disableIfNoConfig) {
+    if (linterConfig.disableIfNoConfig) {
       return [];
-    } else if (defaultConfig) {
-      let configFile = defaultConfig;
+    } else if (linterConfig.defaultConfig) {
+      let configFile = linterConfig.defaultConfig;
       if (!configFile.endsWith('coffeelint.json')) {
         configFile = path.join(configFile, 'coffeelint.json');
       }
