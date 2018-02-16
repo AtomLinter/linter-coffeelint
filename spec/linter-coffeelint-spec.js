@@ -9,6 +9,7 @@ const validPath = join(fixturesPath, 'valid', 'valid.coffee');
 const validCoffeelintPath = join(fixturesPath, 'valid_coffeelint', 'valid.coffee');
 const arrowSpacingPath = join(fixturesPath, 'arrow_spacing', 'arrow_spacing.coffee');
 const arrowSpacingWarningPath = join(fixturesPath, 'arrow_spacing_warning', 'arrow_spacing.coffee');
+const noConfigPath = join(fixturesPath, 'no_config', 'no_config.coffee');
 const linter = require('../src').provideLinter();
 
 describe('The CoffeeLint provider for Linter', () => {
@@ -71,6 +72,59 @@ describe('The CoffeeLint provider for Linter', () => {
       expect(messages[0].excerpt).toBe('test message. (test rule)');
       expect(messages[0].location.file).toBe(validCoffeelintPath);
       expect(messages[0].location.position).toEqual([[0, 0], [0, 41]]);
+    });
+
+    describe('defaultConfig', () => {
+      it('uses default config when none is found', async () => {
+        atom.config.set('linter-coffeelint.defaultConfig', join(fixturesPath, 'default_config', 'coffeelint.json'));
+
+        const editor = await atom.workspace.open(noConfigPath);
+        const messages = await linter.lint(editor);
+
+        expect(messages.length).toBe(1);
+        expect(messages[0].severity).toBe('warning');
+        expect(messages[0].excerpt).toBe('Line exceeds maximum allowed length. Length is 90, max is 10. (max_line_length)');
+        expect(messages[0].location.file).toBe(noConfigPath);
+        expect(messages[0].location.position).toEqual([[0, 0], [0, 90]]);
+      });
+
+      it('checks for coffeelint.json if defaultConfig is directory', async () => {
+        atom.config.set('linter-coffeelint.defaultConfig', join(fixturesPath, 'default_config'));
+
+        const editor = await atom.workspace.open(noConfigPath);
+        const messages = await linter.lint(editor);
+
+        expect(messages.length).toBe(1);
+        expect(messages[0].severity).toBe('warning');
+        expect(messages[0].excerpt).toBe('Line exceeds maximum allowed length. Length is 90, max is 10. (max_line_length)');
+        expect(messages[0].location.file).toBe(noConfigPath);
+        expect(messages[0].location.position).toEqual([[0, 0], [0, 90]]);
+      });
+    });
+
+    describe('disableIfNoConfig', () => {
+      it('uses regular coffeelint config by default', async () => {
+        atom.config.set('linter-coffeelint.defaultConfig', join(fixturesPath, 'default_config'));
+
+        const editor = await atom.workspace.open(noConfigPath);
+        const messages = await linter.lint(editor);
+
+        expect(messages.length).toBe(1);
+        expect(messages[0].severity).toBe('warning');
+        expect(messages[0].excerpt).toBe('Line exceeds maximum allowed length. Length is 90, max is 10. (max_line_length)');
+        expect(messages[0].location.file).toBe(noConfigPath);
+        expect(messages[0].location.position).toEqual([[0, 0], [0, 90]]);
+      });
+
+      it('finds nothing wrong if no config is found', async () => {
+        atom.config.set('linter-coffeelint.defaultConfig', join(fixturesPath, 'default_config'));
+        atom.config.set('linter-coffeelint.disableIfNoConfig', true);
+
+        const editor = await atom.workspace.open(noConfigPath);
+        const messages = await linter.lint(editor);
+
+        expect(messages.length).toBe(0);
+      });
     });
   });
 });

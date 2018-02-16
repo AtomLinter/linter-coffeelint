@@ -29,7 +29,7 @@ const configImportsModules = (config) => {
     Object.prototype.hasOwnProperty.call(config[ruleName], 'module'));
 };
 
-module.exports = (filePath, source, isLiterate) => {
+module.exports = (filePath, source, isLiterate, linterConfig) => {
   const fileDir = path.dirname(filePath);
   process.chdir(fileDir);
 
@@ -76,6 +76,18 @@ module.exports = (filePath, source, isLiterate) => {
       /* eslint-enable import/no-dynamic-require */
       config = configFinder.getConfig(filePath);
       showUpgradeError = true;
+    }
+  }
+
+  if (!config) {
+    if (linterConfig.disableIfNoConfig) {
+      return [];
+    } else if (linterConfig.defaultConfig) {
+      let configFile = linterConfig.defaultConfig;
+      if (!configFile.endsWith('coffeelint.json')) {
+        configFile = path.join(configFile, 'coffeelint.json');
+      }
+      config = configFinder.getConfig(configFile);
     }
   }
 
