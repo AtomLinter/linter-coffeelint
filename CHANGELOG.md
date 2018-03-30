@@ -1,5 +1,14 @@
 # Change Log
 
+## [v2.0.0](https://github.com/AtomLinter/linter-coffeelint/tree/v2.0.0) (2018-03-30)
+[Full Changelog](https://github.com/AtomLinter/linter-coffeelint/compare/v1.3.1...v2.0.0)
+
+**Implemented enhancements:**
+
+- Upgrade to coffeelint v2.x
+- Add settings to use default or disable if no project config found [\#101](https://github.com/AtomLinter/linter-coffeelint/pull/101) ([UziTech](https://github.com/UziTech))
+
+
 ## [v1.3.1](https://github.com/AtomLinter/linter-coffeelint/tree/v1.3.1) (2017-08-16)
 [Full Changelog](https://github.com/AtomLinter/linter-coffeelint/compare/v1.3.0...v1.3.1)
 
