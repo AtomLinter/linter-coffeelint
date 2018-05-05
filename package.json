@@ -4,7 +4,10 @@
   "private": true,
   "version": "2.0.0",
   "description": "Lint CoffeeScript on the fly, using coffeelint",
-  "repository": "https://github.com/AtomLinter/linter-coffeelint.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtomLinter/linter-coffeelint.git"
+  },
   "license": "MIT",
   "engines": {
     "atom": ">=1.7.0 <2.0.0"
@@ -17,6 +20,7 @@
     "linter:2.0.0"
   ],
   "scripts": {
+    "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint": "eslint .",
     "test": "apm test"
   },
@@ -36,6 +40,12 @@
     "semver": "^5.5.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^6.1.3",
+    "@commitlint/config-conventional": "^6.1.3",
+    "@commitlint/travis-cli": "^6.1.3",
+    "@semantic-release/apm-config": "^2.0.1",
+    "husky": "^0.14.3",
+    "semantic-release": "^15.1.7",
     "eslint": "^4.18.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
@@ -61,5 +71,13 @@
       "node": true,
       "browser": true
     }
+  },
+  "release": {
+    "extends": "@semantic-release/apm-config"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
