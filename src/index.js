@@ -76,9 +76,11 @@ module.exports = {
         }
         const source = textEditor.getText();
 
-        const isLiterate = textEditor.getCursors().some(cursor =>
-          cursor.getScopeDescriptor().getScopesArray().some(scope =>
-            scope === 'source.litcoffee'));
+        const isLiterate = textEditor.getCursors().some(cursor => (
+          cursor.getScopeDescriptor().getScopesArray().some(scope => (
+            scope === 'source.litcoffee'
+          ))
+        ));
 
         const linterConfig = atom.config.get('linter-coffeelint');
 
