@@ -84,7 +84,7 @@ describe('The CoffeeLint provider for Linter', () => {
 
       expect(messages.length).toBe(1);
       expect(messages[0].severity).toBe('error');
-      expect(messages[0].excerpt).toBe('unknown level warning for rule: undefined. (CoffeeLint Error)');
+      expect(messages[0].excerpt).toContain('unknown level warning');
       expect(messages[0].location.file).toBe(invalidLevelPath);
       expect(messages[0].location.position).toEqual([[0, 0], [0, 41]]);
     });
