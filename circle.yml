@@ -4,7 +4,6 @@ defaults: &defaults
   working_directory: /tmp/project
   environment:
     APM_TEST_PACKAGES: "linter linter-ui-default busy-signal intentions"
-    USER: ""
   docker:
     - image: arcanemagus/atom-docker-ci:stable
   steps:
