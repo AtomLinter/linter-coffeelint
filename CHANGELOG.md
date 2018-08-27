@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.0...v2.0.1) (2018-08-27)
+
+
+### Bug Fixes
+
+* **error reporting:** fix coffeelint error ([08c0607](https://github.com/AtomLinter/linter-coffeelint/commit/08c0607))
+* **error reporting:** show error when coffeelint fails ([41dab26](https://github.com/AtomLinter/linter-coffeelint/commit/41dab26))
+
 # Change Log
 
 ## [v2.0.0](https://github.com/AtomLinter/linter-coffeelint/tree/v2.0.0) (2018-03-30)
