@@ -7,6 +7,7 @@ import {
 
 const fixturesPath = join(__dirname, 'fixtures');
 const validPath = join(fixturesPath, 'valid', 'valid.coffee');
+const invalidLevelPath = join(fixturesPath, 'invalid-level', 'valid.coffee');
 const validCoffeelintPath = join(fixturesPath, 'valid_coffeelint', 'valid.coffee');
 const arrowSpacingPath = join(fixturesPath, 'arrow_spacing', 'arrow_spacing.coffee');
 const arrowSpacingWarningPath = join(fixturesPath, 'arrow_spacing_warning', 'arrow_spacing.coffee');
@@ -74,6 +75,17 @@ describe('The CoffeeLint provider for Linter', () => {
       expect(messages[0].severity).toBe('warning');
       expect(messages[0].excerpt).toBe('test message. (test rule)');
       expect(messages[0].location.file).toBe(validCoffeelintPath);
+      expect(messages[0].location.position).toEqual([[0, 0], [0, 41]]);
+    });
+
+    it('gives the error on config error', async () => {
+      const editor = await atom.workspace.open(invalidLevelPath);
+      const messages = await linter.lint(editor);
+
+      expect(messages.length).toBe(1);
+      expect(messages[0].severity).toBe('error');
+      expect(messages[0].excerpt).toBe('unknown level warning for rule: undefined. (CoffeeLint Error)');
+      expect(messages[0].location.file).toBe(invalidLevelPath);
       expect(messages[0].location.position).toEqual([[0, 0], [0, 41]]);
     });
 

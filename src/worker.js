@@ -94,16 +94,25 @@ module.exports = (filePath, source, isLiterate, linterConfig) => {
     }
   }
 
-  const results = coffeelint.lint(source, config, isLiterate);
+  try {
+    const results = coffeelint.lint(source, config, isLiterate);
 
-  if (showUpgradeError) {
-    results.push({
+    if (showUpgradeError) {
+      results.push({
+        lineNumber: 1,
+        level: 'error',
+        message: "http://git.io/local_upgrade upgrade your project's CoffeeLint",
+        rule: 'none',
+      });
+    }
+
+    return results;
+  } catch (ex) {
+    return [{
       lineNumber: 1,
       level: 'error',
-      message: "http://git.io/local_upgrade upgrade your project's CoffeeLint",
-      rule: 'none',
-    });
+      message: ex.message,
+      rule: 'CoffeeLint Error',
+    }];
   }
-
-  return results;
 };

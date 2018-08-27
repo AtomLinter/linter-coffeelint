@@ -91,7 +91,9 @@ module.exports = {
           if (context) {
             excerpt = `${message}. ${context}`;
           }
-          excerpt = `${excerpt}. (${rule})`;
+          if (rule !== 'none') {
+            excerpt = `${excerpt}. (${rule})`;
+          }
 
           return {
             severity: level === 'error' ? 'error' : 'warning',
