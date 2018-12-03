@@ -34,21 +34,21 @@
     "atom-linter": "^10.0.0",
     "atom-package-deps": "^4.6.2",
     "coffeelint": "^2.1.0",
-    "ignore": "^5.0.2",
+    "ignore": "^5.0.4",
     "resolve": "^1.8.1",
-    "semver": "^5.5.1"
+    "semver": "^5.6.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.2.0",
+    "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
-    "@commitlint/travis-cli": "^7.2.0",
-    "@semantic-release/apm-config": "^5.0.2",
-    "eslint": "^5.6.1",
+    "@commitlint/travis-cli": "^7.2.1",
+    "@semantic-release/apm-config": "^6.0.1",
+    "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "husky": "^1.1.1",
+    "husky": "^1.2.0",
     "jasmine-fix": "^1.3.1",
-    "semantic-release": "^15.9.17"
+    "semantic-release": "^15.12.4"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
