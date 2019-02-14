@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.2...v2.0.3) (2019-02-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency resolve to v1.10.0 ([5896633](https://github.com/AtomLinter/linter-coffeelint/commit/5896633))
+
 ## [2.0.2](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.1...v2.0.2) (2019-02-14)
 
 
