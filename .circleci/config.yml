@@ -8,17 +8,6 @@ defaults: &defaults
     # Restore project state
     - attach_workspace:
         at: /tmp
-    # # install node (if needed)
-    # - run:
-    #     name: Install Node.js 10
-    #     command: |
-    #       sudo apt-get update && \
-    #       sudo apt-get install --assume-yes --quiet --no-install-suggests \
-    #         --no-install-recommends gnupg && \
-    #       curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && \
-    #       sudo apt-get update && \
-    #       sudo apt-get install --assume-yes --quiet --no-install-suggests \
-    #         --no-install-recommends nodejs
     - run:
         name: Create VFB for Atom to run in
         command: /usr/local/bin/xvfb_start
