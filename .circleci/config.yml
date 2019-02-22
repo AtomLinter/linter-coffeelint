@@ -2,25 +2,12 @@ version: 2
 
 defaults: &defaults
   working_directory: /tmp/project
-  environment:
-    APM_TEST_PACKAGES: "linter linter-ui-default busy-signal intentions"
   docker:
     - image: arcanemagus/atom-docker-ci:stable
   steps:
     # Restore project state
     - attach_workspace:
         at: /tmp
-    # # install node (if needed)
-    # - run:
-    #     name: Install Node.js 10
-    #     command: |
-    #       sudo apt-get update && \
-    #       sudo apt-get install --assume-yes --quiet --no-install-suggests \
-    #         --no-install-recommends gnupg && \
-    #       curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && \
-    #       sudo apt-get update && \
-    #       sudo apt-get install --assume-yes --quiet --no-install-suggests \
-    #         --no-install-recommends nodejs
     - run:
         name: Create VFB for Atom to run in
         command: /usr/local/bin/xvfb_start
@@ -80,7 +67,7 @@ jobs:
   lint:
     <<: *defaults
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:lts
     steps:
       # Restore project state
       - attach_workspace:
