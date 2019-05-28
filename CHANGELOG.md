@@ -1,3 +1,10 @@
+## [2.0.13](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.12...v2.0.13) (2019-05-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v6.1.1 ([dc7b32b](https://github.com/AtomLinter/linter-coffeelint/commit/dc7b32b))
+
 ## [2.0.12](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.11...v2.0.12) (2019-05-28)
 
 
