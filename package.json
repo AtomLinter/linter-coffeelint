@@ -36,7 +36,7 @@
     "coffeelint": "2.1.0",
     "ignore": "5.1.2",
     "resolve": "1.11.1",
-    "semver": "6.2.0"
+    "semver": "6.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "8.1.0",
