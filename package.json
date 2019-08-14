@@ -34,7 +34,7 @@
     "atom-linter": "10.0.0",
     "atom-package-deps": "5.1.0",
     "coffeelint": "2.1.0",
-    "ignore": "5.1.2",
+    "ignore": "5.1.4",
     "resolve": "1.12.0",
     "semver": "6.3.0"
   },
