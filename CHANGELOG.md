@@ -1,3 +1,10 @@
+## [2.0.20](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.19...v2.0.20) (2019-09-13)
+
+
+### Bug Fixes
+
+* update package-lock.json for audit fix ([85d43da](https://github.com/AtomLinter/linter-coffeelint/commit/85d43da))
+
 ## [2.0.19](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.18...v2.0.19) (2019-08-14)
 
 
