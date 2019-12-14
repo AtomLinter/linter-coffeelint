@@ -1,3 +1,11 @@
+## [2.0.24](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.23...v2.0.24) (2019-12-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7 ([80beff0](https://github.com/AtomLinter/linter-coffeelint/commit/80beff09ce5cd8203155c7811b4c9f1f23d0fff9))
+* **deps:** update dependency semver to v7 ([#214](https://github.com/AtomLinter/linter-coffeelint/issues/214)) ([c6631d2](https://github.com/AtomLinter/linter-coffeelint/commit/c6631d290af616ffbe3f27a9688dd30aeb00e1b6))
+
 ## [2.0.23](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.22...v2.0.23) (2019-11-26)
 
 
