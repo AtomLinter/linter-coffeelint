@@ -9,6 +9,7 @@ const fixturesPath = join(__dirname, 'fixtures');
 const validPath = join(fixturesPath, 'valid', 'valid.coffee');
 const invalidLevelPath = join(fixturesPath, 'invalid-level', 'valid.coffee');
 const validCoffeelintPath = join(fixturesPath, 'valid_coffeelint', 'valid.coffee');
+const validCoffeelintCliPath = join(fixturesPath, 'valid_coffeelint_cli', 'valid.coffee');
 const arrowSpacingPath = join(fixturesPath, 'arrow_spacing', 'arrow_spacing.coffee');
 const arrowSpacingWarningPath = join(fixturesPath, 'arrow_spacing_warning', 'arrow_spacing.coffee');
 const noConfigPath = join(fixturesPath, 'no_config', 'no_config.coffee');
@@ -75,6 +76,17 @@ describe('The CoffeeLint provider for Linter', () => {
       expect(messages[0].severity).toBe('warning');
       expect(messages[0].excerpt).toBe('test message. (test rule)');
       expect(messages[0].location.file).toBe(validCoffeelintPath);
+      expect(messages[0].location.position).toEqual([[0, 0], [0, 41]]);
+    });
+
+    it('uses @coffeelint/cli from the project', async () => {
+      const editor = await atom.workspace.open(validCoffeelintCliPath);
+      const messages = await linter.lint(editor);
+
+      expect(messages.length).toBe(1);
+      expect(messages[0].severity).toBe('warning');
+      expect(messages[0].excerpt).toBe('test message. (test rule)');
+      expect(messages[0].location.file).toBe(validCoffeelintCliPath);
       expect(messages[0].location.position).toEqual([[0, 0], [0, 41]]);
     });
 
