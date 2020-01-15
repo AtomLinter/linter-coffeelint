@@ -28,10 +28,7 @@ jobs:
     - name: Install dependencies
       run: apm ci
     - name: Run tests 👩🏾‍💻
-      run: |
-        git config --global user.email "test@example.com"
-        git config --global user.name "test"
-        atom --test spec
+      run: atom --test spec
   Lint:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
