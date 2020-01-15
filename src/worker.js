@@ -12,12 +12,20 @@ const resolveCoffeeLint = (filePath) => {
     return path.dirname(resolve.sync('coffeelint/package.json', {
       basedir: path.dirname(filePath),
     }));
-  } catch (e) {
-    const expected = "Cannot find module 'coffeelint/package.json'";
-    if (e.message.slice(0, expected.length) === expected) {
-      return 'coffeelint';
+  } catch (e1) {
+    if (!e1.message.startsWith("Cannot find module 'coffeelint/package.json'")) {
+      throw e1;
     }
-    throw e;
+    try {
+      return path.dirname(resolve.sync('@coffeelint/cli/package.json', {
+        basedir: path.dirname(filePath),
+      }));
+    } catch (e2) {
+      if (!e2.message.startsWith("Cannot find module '@coffeelint/cli/package.json'")) {
+        throw e2;
+      }
+      return '@coffeelint/cli';
+    }
   }
 };
 
@@ -70,7 +78,7 @@ module.exports = (filePath, source, isLiterate, linterConfig) => {
 
   if (!showUpgradeError) {
     if (configImportsModules(config) && semver.lt(coffeelint.VERSION, '1.9.5')) {
-      coffeeLintPath = 'coffeelint';
+      coffeeLintPath = '@coffeelint/cli';
       /* eslint-disable import/no-dynamic-require */
       coffeelint = require(coffeeLintPath);
       configFinder = require(`${coffeeLintPath}/lib/configfinder`);
