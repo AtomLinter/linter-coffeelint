@@ -21,7 +21,8 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "apm test"
+    "test": "apm test",
+    "semantic-release": "semantic-release"
   },
   "providedServices": {
     "linter": {
