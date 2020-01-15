@@ -113,7 +113,7 @@ module.exports = (filePath, source, isLiterate, linterConfig) => {
       results.push({
         lineNumber: 1,
         level: 'error',
-        message: "http://git.io/local_upgrade upgrade your project's CoffeeLint",
+        message: "https://git.io/local_upgrade upgrade your project's CoffeeLint",
         rule: 'none',
       });
     }
