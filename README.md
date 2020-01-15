@@ -8,7 +8,7 @@
 #linter-coffeelint
 
 This linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides an interface to
-[coffeelint](http://www.coffeelint.org/). It will be used with files that have the “CoffeeScript”
+[coffeelint](https://coffeelint.github.io/coffeelint/). It will be used with files that have the “CoffeeScript”
 or “CoffeeScript (literate)” syntax.
 
 ## Installation
@@ -29,7 +29,7 @@ As of v0.2.0 there is no need to specify a path to coffeelint. If you need to us
 version you can specify it in your project's `package.json` and `linter-coffeelint` will use that
 one. This is the same behavior the coffeelint commandline gives you.
 
-[How do I configure CoffeeLint?](https://github.com/clutchski/coffeelint/blob/master/doc/user.md)
+[How do I configure CoffeeLint?](https://github.com/coffeelint/coffeelint/blob/master/doc/user.md)
 
 ## Contributing
 

@@ -9,16 +9,28 @@ const fs = require('fs');
 
 const resolveCoffeeLint = (filePath) => {
   try {
+    // check for coffeelint in project
     return path.dirname(resolve.sync('coffeelint/package.json', {
       basedir: path.dirname(filePath),
     }));
-  } catch (e) {
-    const expected = "Cannot find module 'coffeelint/package.json'";
-    if (e.message.slice(0, expected.length) === expected) {
-      return 'coffeelint';
+  } catch (ex) {
+    if (!ex.message.startsWith("Cannot find module 'coffeelint/package.json'")) {
+      throw ex;
     }
-    throw e;
   }
+
+  try {
+    // check for @coffeelint/cli in project
+    return path.dirname(resolve.sync('@coffeelint/cli/package.json', {
+      basedir: path.dirname(filePath),
+    }));
+  } catch (ex) {
+    if (!ex.message.startsWith("Cannot find module '@coffeelint/cli/package.json'")) {
+      throw ex;
+    }
+  }
+
+  return '@coffeelint/cli';
 };
 
 const configImportsModules = (config) => {
@@ -58,7 +70,7 @@ module.exports = (filePath, source, isLiterate, linterConfig) => {
   // this assumption, so CoffeeLint < 1.9.1 will fail to find CoffeeScript.
   // See https://github.com/clutchski/coffeelint/pull/383
   if (semver.lt(coffeelint.VERSION, '1.9.1')) {
-    coffeeLintPath = 'coffeelint';
+    coffeeLintPath = '@coffeelint/cli';
     // eslint-disable-next-line import/no-dynamic-require
     coffeelint = require(coffeeLintPath);
     showUpgradeError = true;
@@ -70,7 +82,7 @@ module.exports = (filePath, source, isLiterate, linterConfig) => {
 
   if (!showUpgradeError) {
     if (configImportsModules(config) && semver.lt(coffeelint.VERSION, '1.9.5')) {
-      coffeeLintPath = 'coffeelint';
+      coffeeLintPath = '@coffeelint/cli';
       /* eslint-disable import/no-dynamic-require */
       coffeelint = require(coffeeLintPath);
       configFinder = require(`${coffeeLintPath}/lib/configfinder`);
@@ -101,7 +113,7 @@ module.exports = (filePath, source, isLiterate, linterConfig) => {
       results.push({
         lineNumber: 1,
         level: 'error',
-        message: "http://git.io/local_upgrade upgrade your project's CoffeeLint",
+        message: "https://git.io/local_upgrade upgrade your project's CoffeeLint",
         rule: 'none',
       });
     }
