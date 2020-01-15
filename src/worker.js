@@ -9,24 +9,28 @@ const fs = require('fs');
 
 const resolveCoffeeLint = (filePath) => {
   try {
+    // check for coffeelint in project
     return path.dirname(resolve.sync('coffeelint/package.json', {
       basedir: path.dirname(filePath),
     }));
-  } catch (e1) {
-    if (!e1.message.startsWith("Cannot find module 'coffeelint/package.json'")) {
-      throw e1;
-    }
-    try {
-      return path.dirname(resolve.sync('@coffeelint/cli/package.json', {
-        basedir: path.dirname(filePath),
-      }));
-    } catch (e2) {
-      if (!e2.message.startsWith("Cannot find module '@coffeelint/cli/package.json'")) {
-        throw e2;
-      }
-      return '@coffeelint/cli';
+  } catch (ex) {
+    if (!ex.message.startsWith("Cannot find module 'coffeelint/package.json'")) {
+      throw ex;
     }
   }
+
+  try {
+    // check for @coffeelint/cli in project
+    return path.dirname(resolve.sync('@coffeelint/cli/package.json', {
+      basedir: path.dirname(filePath),
+    }));
+  } catch (ex) {
+    if (!ex.message.startsWith("Cannot find module '@coffeelint/cli/package.json'")) {
+      throw ex;
+    }
+  }
+
+  return '@coffeelint/cli';
 };
 
 const configImportsModules = (config) => {
@@ -66,7 +70,7 @@ module.exports = (filePath, source, isLiterate, linterConfig) => {
   // this assumption, so CoffeeLint < 1.9.1 will fail to find CoffeeScript.
   // See https://github.com/clutchski/coffeelint/pull/383
   if (semver.lt(coffeelint.VERSION, '1.9.1')) {
-    coffeeLintPath = 'coffeelint';
+    coffeeLintPath = '@coffeelint/cli';
     // eslint-disable-next-line import/no-dynamic-require
     coffeelint = require(coffeeLintPath);
     showUpgradeError = true;
