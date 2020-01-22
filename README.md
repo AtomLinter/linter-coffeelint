@@ -1,8 +1,4 @@
-<!-- [![Stories in Ready](https://badge.waffle.io/AtomLinter/linter-coffeelint.png?label=ready&title=Ready)](https://waffle.io/AtomLinter/linter-coffeelint) -->
-
-[![Travis CI](https://travis-ci.org/AtomLinter/linter-coffeelint.svg?branch=master)](https://travis-ci.org/AtomLinter/linter-coffeelint)
-[![Appveyor](https://ci.appveyor.com/api/projects/status/hcq63kmaskumyea5?svg=true)](https://ci.appveyor.com/project/UziTech/linter-coffeelint)
-[![CircleCI](https://circleci.com/gh/AtomLinter/linter-coffeelint.svg?style=svg)](https://circleci.com/gh/AtomLinter/linter-coffeelint)
+![Github Actions](https://github.com/AtomLinter/linter-coffeelint/workflows/CI/badge.svg?branch=master)
 [![Dependencies](https://david-dm.org/AtomLinter/linter-coffeelint/status.svg)](https://david-dm.org/AtomLinter/linter-coffeelint)
 
 #linter-coffeelint
