@@ -1,3 +1,13 @@
+## [2.0.30](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.29...v2.0.30) (2020-01-22)
+
+
+### Bug Fixes
+
+* **deps:** update deps ([2d4bde1](https://github.com/AtomLinter/linter-coffeelint/commit/2d4bde167beab38739bf1b80973ea92e5a286180))
+* fail silently if config finder fails ([ceeda1a](https://github.com/AtomLinter/linter-coffeelint/commit/ceeda1a6bfdfba3bb226cc70116b832e6417cea3))
+* refactor resolve coffeelint in package ([1a1446f](https://github.com/AtomLinter/linter-coffeelint/commit/1a1446fff797d70c45f7e364c322d75bca3caa02))
+* **deps:** update coffeelint ([f08bccd](https://github.com/AtomLinter/linter-coffeelint/commit/f08bccdf628bd641129497907099596c50e6b19a))
+
 ## [2.0.29](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.28...v2.0.29) (2020-01-07)
 
 
