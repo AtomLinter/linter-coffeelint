@@ -78,7 +78,13 @@ module.exports = (filePath, source, isLiterate, linterConfig) => {
 
   // eslint-disable-next-line import/no-dynamic-require
   let configFinder = require(`${coffeeLintPath}/lib/configfinder`);
-  let config = configFinder.getConfig(filePath);
+  let config;
+  try {
+    config = configFinder.getConfig(filePath);
+  } catch (ex) {
+    // this version of coffeelint could not find a config file
+    // fail silently
+  }
 
   if (!showUpgradeError) {
     if (configImportsModules(config) && semver.lt(coffeelint.VERSION, '1.9.5')) {
