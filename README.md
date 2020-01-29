@@ -1,7 +1,7 @@
-![Github Actions](https://github.com/AtomLinter/linter-coffeelint/workflows/CI/badge.svg?branch=master)
+![Github Actions](https://github.com/AtomLinter/linter-coffeelint/workflows/CI/badge.svg)
 [![Dependencies](https://david-dm.org/AtomLinter/linter-coffeelint/status.svg)](https://david-dm.org/AtomLinter/linter-coffeelint)
 
-#linter-coffeelint
+# linter-coffeelint
 
 This linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides an interface to
 [coffeelint](https://coffeelint.github.io/coffeelint/). It will be used with files that have the “CoffeeScript”
