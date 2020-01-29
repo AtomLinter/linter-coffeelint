@@ -4,7 +4,7 @@
 # linter-coffeelint
 
 This linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides an interface to
-[coffeelint](https://coffeelint.github.io/coffeelint/). It will be used with files that have the “CoffeeScript”
+[coffeelint](https://coffeelint.github.io/). It will be used with files that have the “CoffeeScript”
 or “CoffeeScript (literate)” syntax.
 
 ## Installation
