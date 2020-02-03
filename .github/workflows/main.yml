@@ -56,7 +56,8 @@ jobs:
         run: npm ci
       - name: Release 🎉
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          # Override the default Actions token with a private token
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           ATOM_ACCESS_TOKEN: ${{ secrets.ATOM_ACCESS_TOKEN }}
         run: npx semantic-release
 
