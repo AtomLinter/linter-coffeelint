@@ -1,3 +1,10 @@
+## [2.0.32](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.31...v2.0.32) (2020-02-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency resolve to v1.15.1 ([72c6520](https://github.com/AtomLinter/linter-coffeelint/commit/72c65209491ce4f100db605a154560f2599f4d03))
+
 ## [2.0.31](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.30...v2.0.31) (2020-02-03)
 
 
