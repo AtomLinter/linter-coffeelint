@@ -1,3 +1,10 @@
+## [2.0.40](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.39...v2.0.40) (2020-04-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.2.2 ([5c2b88a](https://github.com/AtomLinter/linter-coffeelint/commit/5c2b88a97d5fdee77d51cfa4905ab97c35e06e29))
+
 ## [2.0.39](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.38...v2.0.39) (2020-04-10)
 
 
