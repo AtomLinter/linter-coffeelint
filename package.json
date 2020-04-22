@@ -35,7 +35,7 @@
     "atom-package-deps": "5.1.0",
     "@coffeelint/cli": "3.2.3",
     "ignore": "5.1.4",
-    "resolve": "1.16.1",
+    "resolve": "1.17.0",
     "semver": "7.3.2"
   },
   "devDependencies": {
