@@ -33,7 +33,7 @@
   "dependencies": {
     "atom-linter": "10.0.0",
     "atom-package-deps": "6.0.0",
-    "@coffeelint/cli": "3.2.6",
+    "@coffeelint/cli": "3.2.7",
     "ignore": "5.1.6",
     "resolve": "1.17.0",
     "semver": "7.3.2"
