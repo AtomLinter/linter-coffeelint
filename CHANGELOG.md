@@ -1,3 +1,10 @@
+## [2.0.53](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.52...v2.0.53) (2020-07-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @coffeelint/cli to v3.2.9 ([bf6aa99](https://github.com/AtomLinter/linter-coffeelint/commit/bf6aa994ac2270d8d327229b2690508863cb5684))
+
 ## [2.0.52](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.51...v2.0.52) (2020-07-03)
 
 
