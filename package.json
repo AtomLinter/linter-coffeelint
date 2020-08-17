@@ -17,7 +17,16 @@
     "language-iced-coffee-script:grammar-used"
   ],
   "package-deps": [
-    "linter:2.2.0"
+    [
+      {
+        "name": "linter",
+        "minimumVersion": "2.2.0"
+      },
+      {
+        "name": "atom-ide-ui",
+        "minimumVersion": "0.13.0"
+      }
+    ]
   ],
   "scripts": {
     "lint": "eslint .",
