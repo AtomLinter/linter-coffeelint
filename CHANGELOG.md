@@ -1,3 +1,11 @@
+## [2.0.55](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.54...v2.0.55) (2020-08-17)
+
+
+### Bug Fixes
+
+* update package-deps ([8702b00](https://github.com/AtomLinter/linter-coffeelint/commit/8702b0049cc844fe2fef6ce9c609b7b740cc1bbf))
+* **deps:** update dependency atom-package-deps to v7 ([cba82e1](https://github.com/AtomLinter/linter-coffeelint/commit/cba82e1d6b193381416cb2965f9004f35e011655))
+
 ## [2.0.54](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.53...v2.0.54) (2020-07-15)
 
 
