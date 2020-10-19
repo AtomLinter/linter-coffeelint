@@ -44,7 +44,7 @@
     "atom-linter": "10.0.0",
     "atom-package-deps": "7.0.2",
     "ignore": "5.1.8",
-    "resolve": "1.18.0",
+    "resolve": "1.18.1",
     "semver": "7.3.2"
   },
   "devDependencies": {
