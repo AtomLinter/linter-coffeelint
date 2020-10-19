@@ -1,3 +1,10 @@
+## [2.0.60](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.59...v2.0.60) (2020-10-19)
+
+
+### Bug Fixes
+
+* update all deps ([f0b4154](https://github.com/AtomLinter/linter-coffeelint/commit/f0b41548e61919544b2b72b96e6ffb137a017db4))
+
 ## [2.0.59](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.58...v2.0.59) (2020-10-16)
 
 
