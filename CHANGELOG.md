@@ -1,3 +1,10 @@
+## [2.0.63](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.62...v2.0.63) (2020-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @coffeelint/cli to v4.1.2 ([730e45f](https://github.com/AtomLinter/linter-coffeelint/commit/730e45f61edf05ac197e2c11750b02295f2d2be5))
+
 ## [2.0.62](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.61...v2.0.62) (2020-11-11)
 
 
