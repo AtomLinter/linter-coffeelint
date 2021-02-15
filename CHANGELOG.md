@@ -1,3 +1,10 @@
+## [2.0.70](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.69...v2.0.70) (2021-02-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency atom-package-deps to v7.2.1 ([4316cc5](https://github.com/AtomLinter/linter-coffeelint/commit/4316cc54880db8390aa805e0957c1c8d18fb2f6d))
+
 ## [2.0.69](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.68...v2.0.69) (2021-02-12)
 
 

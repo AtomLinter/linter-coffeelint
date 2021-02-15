@@ -2,7 +2,7 @@
   "name": "linter-coffeelint",
   "main": "./src/index",
   "private": true,
-  "version": "2.0.69",
+  "version": "2.0.70",
   "description": "Lint CoffeeScript on the fly, using coffeelint",
   "repository": {
     "type": "git",
