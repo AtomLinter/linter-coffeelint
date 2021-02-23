@@ -48,9 +48,9 @@
     "semver": "7.3.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "11.0.0",
-    "@commitlint/config-conventional": "11.0.0",
-    "@commitlint/travis-cli": "11.0.0",
+    "@commitlint/cli": "12.0.0",
+    "@commitlint/config-conventional": "12.0.0",
+    "@commitlint/travis-cli": "12.0.0",
     "@semantic-release/apm-config": "8.0.0",
     "eslint": "7.20.0",
     "eslint-config-airbnb-base": "14.2.1",
