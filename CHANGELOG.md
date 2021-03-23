@@ -1,3 +1,12 @@
+## [2.0.72](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.71...v2.0.72) (2021-03-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @coffeelint/cli to v4.1.4 ([14408d1](https://github.com/AtomLinter/linter-coffeelint/commit/14408d1ef6058fdd6e891ab9dfabda53c65aeb5c))
+* **deps:** update dependency atom-package-deps to v7.2.3 ([b963ec2](https://github.com/AtomLinter/linter-coffeelint/commit/b963ec2f4c36d6367bde3bee4cca96c56684ac1e))
+* **deps:** update dependency semver to v7.3.5 ([e387658](https://github.com/AtomLinter/linter-coffeelint/commit/e387658dec111a09e71874988519ad593379000f))
+
 ## [2.0.71](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.70...v2.0.71) (2021-02-16)
 
 
