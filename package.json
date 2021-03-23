@@ -45,7 +45,7 @@
     "atom-package-deps": "7.2.3",
     "ignore": "5.1.8",
     "resolve": "1.20.0",
-    "semver": "7.3.4"
+    "semver": "7.3.5"
   },
   "devDependencies": {
     "@commitlint/cli": "12.0.1",
