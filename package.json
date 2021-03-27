@@ -87,6 +87,10 @@
     ],
     "semanticCommits": true,
     "rangeStrategy": "pin",
+    "devDependencies": {
+      "automerge": true,
+      "commitMessageTopic": "devDependency {{depName}}"
+    },
     "packageRules": [
       {
         "packagePatterns": [
