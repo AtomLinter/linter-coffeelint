@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@semantic-release/apm-config": "8.0.0",
-    "eslint": "7.26.0",
+    "eslint": "7.27.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-plugin-import": "2.23.3",
     "jasmine-fix": "1.3.1",
