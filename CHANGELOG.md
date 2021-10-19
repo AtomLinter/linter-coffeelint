@@ -1,3 +1,10 @@
+## [2.0.81](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.80...v2.0.81) (2021-10-19)
+
+
+### Bug Fixes
+
+* force release ([ceb7a23](https://github.com/AtomLinter/linter-coffeelint/commit/ceb7a238e8c16dc57e64b21cc21600ef4e59cb5d))
+
 ## [2.0.80](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.79...v2.0.80) (2021-10-19)
 
 
