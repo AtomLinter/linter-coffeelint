@@ -12,7 +12,6 @@ or “CoffeeScript (literate)” syntax.
 installed to use this plugin. To install Linter please follow the instructions
 [here](https://github.com/AtomLinter/Linter).
 
-
 ### Plugin Installation
 
 ```sh
