@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: UziTech/action-setup-atom@v1
       with:
         channel: ${{ matrix.channel }}
@@ -36,7 +36,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
@@ -50,7 +50,7 @@ jobs:
     if: github.ref == 'refs/heads/master' && github.event.repository.fork == false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: UziTech/action-setup-atom@v1
       - uses: actions/setup-node@v3
         with:
