@@ -40,7 +40,7 @@
     }
   },
   "dependencies": {
-    "@coffeelint/cli": "5.2.4",
+    "@coffeelint/cli": "5.2.5",
     "atom-linter": "10.0.0",
     "atom-package-deps": "8.0.0",
     "ignore": "5.2.0",
