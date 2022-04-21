@@ -11,7 +11,6 @@ env:
 jobs:
 
   Test:
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
@@ -20,9 +19,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
-    - uses: UziTech/action-setup-atom@v1
+    - uses: UziTech/action-setup-atom@v3
       with:
-        channel: ${{ matrix.channel }}
+        version: ${{ matrix.channel }}
     - name: Atom version
       run: atom -v
     - name: APM version
@@ -33,7 +32,6 @@ jobs:
       run: atom --test spec
 
   Lint:
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -51,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: UziTech/action-setup-atom@v1
+      - uses: UziTech/action-setup-atom@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
@@ -63,10 +61,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           ATOM_ACCESS_TOKEN: ${{ secrets.ATOM_ACCESS_TOKEN }}
         run: npx semantic-release
-
-  Skip:
-    if: contains(github.event.head_commit.message, '[skip ci]')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Skip CI 🚫
-        run: echo skip ci
