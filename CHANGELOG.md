@@ -1,3 +1,10 @@
+## [2.0.93](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.92...v2.0.93) (2022-04-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @coffeelint/cli to v5.2.7 ([e15e48c](https://github.com/AtomLinter/linter-coffeelint/commit/e15e48c6d07b470e222a50e987d9bb95ae559adb))
+
 ## [2.0.92](https://github.com/AtomLinter/linter-coffeelint/compare/v2.0.91...v2.0.92) (2022-04-13)
 
 
