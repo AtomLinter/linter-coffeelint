@@ -45,7 +45,7 @@
     "atom-package-deps": "8.0.0",
     "ignore": "5.2.0",
     "resolve": "1.22.1",
-    "semver": "7.3.8"
+    "semver": "7.5.4"
   },
   "devDependencies": {
     "@semantic-release/apm-config": "9.0.1",
